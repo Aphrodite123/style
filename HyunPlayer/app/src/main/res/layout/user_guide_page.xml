@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/user_guide_introductory_top_margin"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/user_guide_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/app_introductory_title_1"/>
+
+        <ImageView
+            android:id="@+id/user_guide_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/user_guide_img_top_margin"
+            android:src="@drawable/app_introductory_img_1"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/user_guide_start_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="70dp"
+        android:layout_marginTop="@dimen/user_guide_introductory_top_margin"
+        android:background="@drawable/btn_bg_green_rounded_rectangle"
+        android:minWidth="160dp"
+        android:text="@string/user_guide_start"/>
+
+</RelativeLayout>

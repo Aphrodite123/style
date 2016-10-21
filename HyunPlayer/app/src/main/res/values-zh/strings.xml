@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">炫播</string>
+    <string name="action_settings">设置</string>
+
+    <!-- welcome activity -->
+    <string name="welcome_advert_countdown">%ds 跳过</string>
+
+    <!-- user guide -->
+    <string name="user_guide_start">立即体验</string>
+
+    <!-- home activity -->
+    <string name="menus_recommended">推荐</string>
+    <string name="menus_tv">电视剧</string>
+    <string name="menus_movie">电影</string>
+    <string name="menus_variety">综艺</string>
+    <string name="menus_cartoon">动漫</string>
+    <string name="menus_infomation">资讯</string>
+    <string name="menus_entertainment">娱乐</string>
+    <string name="menus_funny">搞笑</string>
+    <string name="menus_child">少儿</string>
+    <string name="menus_original">原创</string>
+</resources>

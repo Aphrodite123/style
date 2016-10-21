@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">HyunPlayer</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- welcome activity -->
+    <string name="welcome_advert_countdown">%ds skip</string>
+
+    <!-- user guide -->
+    <string name="user_guide_start">Start</string>
+
+    <!-- home activity -->
+    <string name="menus_recommended">Recommend</string>
+    <string name="menus_tv">TV</string>
+    <string name="menus_movie">Movie</string>
+    <string name="menus_variety">Variety</string>
+    <string name="menus_cartoon">Cartoon</string>
+    <string name="menus_infomation">Info</string>
+    <string name="menus_entertainment">Entertainment</string>
+    <string name="menus_funny">Funny</string>
+    <string name="menus_child">Child</string>
+    <string name="menus_original">Original</string>
+</resources>

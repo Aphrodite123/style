@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <HorizontalScrollView
+        android:id="@+id/horizontal_scroll_hsv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/horizontal_scroll_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+
+            <!-- indicator -->
+            <View
+                android:id="@+id/horizontal_scroll_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@color/green_button_normal"/>
+
+            <!--  zero line-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/button_disable"/>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/horizontal_scroll_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/horizontal_scroll_hsv"/>
+
+</RelativeLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.aphrodite.hyunplayer.ui.view.slideview.SlidingMenu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:slid="http://schemas.android.com/apk/res/com.aphrodite.hyunplayer"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_frame_background"
+    android:scrollbars="none"
+    slid:rightPadding="50dp"
+    tools:ignore="ResAuto">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal">
+
+        <include layout="@layout/layout_menu"/>
+
+        <com.aphrodite.hyunplayer.ui.view.bar.HeadHorizontalScrollBar
+            android:id="@+id/slide_menu_hsb"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+</com.aphrodite.hyunplayer.ui.view.slideview.SlidingMenu>
