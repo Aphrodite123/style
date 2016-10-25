@@ -12,6 +12,7 @@ import com.aphrodite.hyunplayer.R;
 import com.aphrodite.hyunplayer.config.BaseConfig;
 import com.aphrodite.hyunplayer.config.HyApplication;
 import com.aphrodite.hyunplayer.ui.base.BaseActivity;
+//wanglin
 
 /**
  * Created by Aphrodite on 2016/9/13.
