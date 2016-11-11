@@ -2,6 +2,7 @@ package com.aphrodite.hyunplayer.ui.view.bar;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
@@ -31,15 +32,11 @@ public class HsbAdapter extends AbsHsbAdapter {
     @Override
     public List<View> getNavigationViews() {
         List<View> views = new ArrayList<View>();
-        if (null != menus) {
-            for (int i = 0; i < menus.length; i++) {
-                TextView view = new TextView(mContext);
-                view.setText(mContext.getResources().getString(menus[i]));
-                view.setTextSize(mContext.getResources().getDimension(R.dimen.menu_textview_size));
-                view.setSingleLine();
-                view.setTextColor(Color.BLUE);
-                views.add(view);
-            }
+        if (null != menus) for (int i = 0; i < menus.length; i++) {
+            TextView view = (TextView) LayoutInflater.from(mContext).inflate(R.layout
+                    .layout_navigation_item, null);
+            view.setText(mContext.getResources().getString(menus[i]));
+            views.add(view);
         }
         return views;
     }
