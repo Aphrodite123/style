@@ -7,7 +7,6 @@ import android.os.Message;
 import android.view.View;
 import android.widget.TextView;
 
-import com.aphrodite.hyunplayer.HomeActivity;
 import com.aphrodite.hyunplayer.R;
 import com.aphrodite.hyunplayer.config.BaseConfig;
 import com.aphrodite.hyunplayer.config.HyApplication;

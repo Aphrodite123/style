@@ -15,6 +15,9 @@ import com.aphrodite.hyunplayer.ui.base.BaseActivity;
 import com.aphrodite.hyunplayer.ui.view.bar.HeadHorizontalScrollBar;
 import com.aphrodite.hyunplayer.ui.view.bar.HsbAdapter;
 import com.viewpagerindicator.IconPageIndicator;
+
+import java.util.ArrayList;
+
 public class HomeActivity extends BaseActivity {
     private static final String TAG = HomeActivity.class.getSimpleName();
     private RelativeLayout mUserGuideLayout;
@@ -35,7 +38,7 @@ public class HomeActivity extends BaseActivity {
      */
     private HeadHorizontalScrollBar mScrollMenu;
 
-    private HsbAdapter mHsbAdapter;
+//    private HsbAdapter mHsbAdapter;
 
 
     @Override
@@ -52,12 +55,12 @@ public class HomeActivity extends BaseActivity {
         mGuideViewPager = (ViewPager) findViewById(R.id.user_guide_viewpager);
         mGuideIconPageIndicator = (IconPageIndicator) findViewById(R.id.user_guide_indicator);
 
-        mScrollMenu = (HeadHorizontalScrollBar) findViewById(R.id.slide_menu_hsb);
+//        mScrollMenu = (HeadHorizontalScrollBar) findViewById(R.id.slide_menu_hsb);
     }
 
     private void initData() {
-        mHsbAdapter = new HsbAdapter(this);
-        mScrollMenu.setAdapter(mHsbAdapter);
+//        mHsbAdapter = new HsbAdapter(this);
+//        mScrollMenu.setAdapter(mHsbAdapter);
 
     }
 

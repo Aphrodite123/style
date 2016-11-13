@@ -17,10 +17,7 @@
 
         <include layout="@layout/layout_menu"/>
 
-        <com.aphrodite.hyunplayer.ui.view.bar.HeadHorizontalScrollBar
-            android:id="@+id/slide_menu_hsb"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+        <include layout="@layout/layout_slide_home"/>
 
     </LinearLayout>
 
