@@ -13,7 +13,6 @@ import com.aphrodite.hyunplayer.config.SharePrefManager;
 import com.aphrodite.hyunplayer.ui.adapter.UserGuideAdapter;
 import com.aphrodite.hyunplayer.ui.base.BaseActivity;
 import com.aphrodite.hyunplayer.ui.view.bar.HeadHorizontalScrollBar;
-import com.aphrodite.hyunplayer.ui.view.bar.HsbAdapter;
 import com.viewpagerindicator.IconPageIndicator;
 
 import java.util.ArrayList;

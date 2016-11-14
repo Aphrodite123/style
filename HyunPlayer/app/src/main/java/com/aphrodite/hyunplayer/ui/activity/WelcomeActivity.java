@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.aphrodite.hyunplayer.R;
 import com.aphrodite.hyunplayer.config.BaseConfig;
 import com.aphrodite.hyunplayer.config.HyApplication;
+import com.aphrodite.hyunplayer.config.IntentAction;
 import com.aphrodite.hyunplayer.ui.base.BaseActivity;
 
 /**
@@ -53,7 +54,7 @@ public class WelcomeActivity extends BaseActivity {
     };
 
     private void enterHomeActivity() {
-        Intent intent = new Intent(WelcomeActivity.this, HomeActivity.class);
+        Intent intent = new Intent(IntentAction.HomeActivityAction.ACTION);
         startActivity(intent);
     }
 

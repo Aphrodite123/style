@@ -5,7 +5,9 @@ package com.aphrodite.hyunplayer.config;
  */
 
 public interface IntentAction {
-    public static final String ACTION_PREFIX=BaseConfig.PACKAGE_NAME+".";
+    public static final String ACTION_PREFIX = BaseConfig.PACKAGE_NAME + ".";
 
-    public interface
+    public interface HomeActivityAction {
+        String ACTION = ACTION_PREFIX + "ui.activity.HOME";
+    }
 }
