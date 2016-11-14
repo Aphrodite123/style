@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:id="@+id/slide_home_rl"
+<FrameLayout android:id="@+id/slide_home_rl"
+             xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="match_parent"
              android:layout_height="match_parent">
 
@@ -8,6 +8,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/hyunplayer_navigation_bg">
+
+        <ImageView
+            android:id="@+id/actionbar_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/actionbar_logout_default"/>
 
         <HorizontalScrollView
             android:id="@+id/actionbar_hsv"

@@ -28,7 +28,7 @@
 
         <activity android:name="com.aphrodite.hyunplayer.ui.activity.HomeActivity">
             <intent-filter>
-                <action android:name="com.aphrodite.hyunplayer.ui.activity.HOME"/>
+                <action android:name="com.example.aphrodite.hyunplayer.ui.activity.HOME"/>
 
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
