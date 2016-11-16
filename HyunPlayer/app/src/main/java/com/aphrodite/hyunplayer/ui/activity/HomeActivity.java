@@ -3,6 +3,9 @@ package com.aphrodite.hyunplayer.ui.activity;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -10,12 +13,17 @@ import android.widget.RelativeLayout;
 import com.aphrodite.hyunplayer.R;
 import com.aphrodite.hyunplayer.config.HyApplication;
 import com.aphrodite.hyunplayer.config.SharePrefManager;
+import com.aphrodite.hyunplayer.ui.adapter.SlideHomePagerAdapter;
 import com.aphrodite.hyunplayer.ui.adapter.UserGuideAdapter;
 import com.aphrodite.hyunplayer.ui.base.BaseActivity;
-import com.aphrodite.hyunplayer.ui.view.bar.HeadHorizontalScrollBar;
+import com.aphrodite.hyunplayer.ui.base.BaseFragment;
+import com.aphrodite.hyunplayer.ui.fragment.ListenFragment;
+import com.aphrodite.hyunplayer.ui.fragment.SingFragment;
+import com.aphrodite.hyunplayer.ui.fragment.WatchFragment;
 import com.viewpagerindicator.IconPageIndicator;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeActivity extends BaseActivity {
     private static final String TAG = HomeActivity.class.getSimpleName();
@@ -31,11 +39,40 @@ public class HomeActivity extends BaseActivity {
     private static final boolean[] APP_INTRODUCTOR_SIGN_PAGES = {false, false, false, true};
 
     private UserGuideAdapter mGuideAdapter;
+    private SlideHomePagerAdapter mHomePagerAdapter;
 
     /**
      * Horizontal scroll menu
      */
-    private HeadHorizontalScrollBar mScrollMenu;
+//    private HeadHorizontalScrollBar mScrollMenu;
+    /**
+     * slide home layout
+     */
+    private RelativeLayout mActionbarRL;
+    private ImageView mActionbarLogout;
+    private ImageView mActionbarListen;
+    private ImageView mActionbarWatch;
+    private ImageView mActionbarSing;
+    private View mScrollIndicator;
+    private ImageView mActionbarSearch;
+    private ViewPager mHomeViewPager;
+    /**
+     * actionbar button widths
+     */
+    private int[] mBtnsWidth;
+    /**
+     * each tab of width
+     */
+    private int mIndicatorWidth;
+    /**
+     * current indicator loaction
+     */
+    private int mCurIndicatorLocation = 0;
+
+    private List<BaseFragment> mFragments;
+    private ListenFragment mListeneFragment;
+    private WatchFragment mWatchFragment;
+    private SingFragment mSingFragment;
 
 //    private HsbAdapter mHsbAdapter;
 
@@ -54,10 +91,44 @@ public class HomeActivity extends BaseActivity {
         mGuideViewPager = (ViewPager) findViewById(R.id.user_guide_viewpager);
         mGuideIconPageIndicator = (IconPageIndicator) findViewById(R.id.user_guide_indicator);
 
+        mActionbarRL = (RelativeLayout) findViewById(R.id.actionbar_rl);
+        mActionbarLogout = (ImageView) findViewById(R.id.actionbar_logout);
+        mActionbarListen = (ImageView) findViewById(R.id.actionbar_listen);
+        mActionbarWatch = (ImageView) findViewById(R.id.actionbar_watch);
+        mActionbarSing = (ImageView) findViewById(R.id.actionbar_sing);
+        mScrollIndicator = (View) findViewById(R.id.actionbar_horizontal_scroll_indicator);
+        mActionbarSearch = (ImageView) findViewById(R.id.actionbar_search);
+        mHomeViewPager = (ViewPager) findViewById(R.id.home_slide_vp);
+        mHomeViewPager.setOnPageChangeListener(new HomePageChangeListenr());
+
 //        mScrollMenu = (HeadHorizontalScrollBar) findViewById(R.id.slide_menu_hsb);
     }
 
+    /**
+     * Initalize indicator width
+     */
+    private void initIndicatorWidth() {
+        ViewGroup.LayoutParams cusorParams = mScrollIndicator.getLayoutParams();
+        cusorParams.width = mIndicatorWidth;
+        mScrollIndicator.setLayoutParams(cusorParams);
+    }
+
     private void initData() {
+        mListeneFragment = ListenFragment.getInstance();
+        mWatchFragment = WatchFragment.getInstance();
+        mSingFragment = SingFragment.getInstance();
+        mFragments.add(mListeneFragment);
+        mFragments.add(mWatchFragment);
+        mFragments.add(mSingFragment);
+        mHomePagerAdapter = new SlideHomePagerAdapter(this, mFragments);
+        mHomeViewPager.setAdapter(mHomePagerAdapter);
+
+        if (null == mBtnsWidth) {
+            mBtnsWidth = new int[]{mActionbarListen.getWidth(), mActionbarWatch.getWidth(),
+                    mActionbarSing.getWidth()};
+        }
+        mIndicatorWidth = mActionbarListen.getWidth();
+        initIndicatorWidth();
 //        mHsbAdapter = new HsbAdapter(this);
 //        mScrollMenu.setAdapter(mHsbAdapter);
 
@@ -102,5 +173,37 @@ public class HomeActivity extends BaseActivity {
         mGuideViewPager.setAdapter(mGuideAdapter);
 
         mGuideIconPageIndicator.setViewPager(mGuideViewPager);
+    }
+
+    private class HomePageChangeListenr implements ViewPager.OnPageChangeListener {
+        int scrollX;
+
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            scrollX =
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+            doIndicatorAnim();
+        }
+    }
+
+    /**
+     * The movement animtion effect
+     *
+     * @param position
+     */
+    private void doIndicatorAnim(int curLocation, int desLocation) {
+        TranslateAnimation animation = new TranslateAnimation(curLocation, desLocation, 0f, 0f);
+        animation.setInterpolator(new LinearInterpolator());
+        animation.setFillAfter(true);
+        animation.setDuration(100);
+        mScrollIndicator.startAnimation(animation);
     }
 }
