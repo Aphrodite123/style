@@ -1,43 +1,39 @@
 package com.aphrodite.hyunplayer.ui.adapter;
 
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import com.aphrodite.hyunplayer.ui.base.BaseFragment;
-
 import java.util.List;
 
 /**
  * Created by Administrator on 2016/11/16.
  */
 
-public class SlideHomePagerAdapter extends PagerAdapter {
+public class SlideHomePagerAdapter extends FragmentPagerAdapter {
     private Context mContext;
     private List<BaseFragment> mFragments;
 
-    public SlideHomePagerAdapter(Context context, List<BaseFragment> fragments) {
-        this.mContext = context;
+    public SlideHomePagerAdapter(Context mContext, FragmentManager fm, List<BaseFragment>
+            fragments) {
+        super(fm);
+        this.mContext = mContext;
         this.mFragments = fragments;
     }
 
     @Override
-    public int getCount() {
-        int count = 0;
-        if (null != mFragments) {
-            count = mFragments.size();
-        }
-        return count;
-    }
-
-    @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Fragment getItem(int position) {
         return mFragments.get(position);
     }
 
     @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return view == object;
+    public int getItemPosition(Object object) {
+        return mFragments.indexOf(object);
+    }
+
+    @Override
+    public int getCount() {
+        return mFragments.size();
     }
 }

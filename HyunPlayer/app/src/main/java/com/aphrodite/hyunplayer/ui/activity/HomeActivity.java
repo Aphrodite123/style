@@ -8,6 +8,7 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.aphrodite.hyunplayer.R;
@@ -64,6 +65,7 @@ public class HomeActivity extends BaseActivity {
      * each tab of width
      */
     private int mIndicatorWidth;
+    private LinearLayout.LayoutParams mCusorParams;
     /**
      * current indicator loaction
      */
@@ -108,19 +110,22 @@ public class HomeActivity extends BaseActivity {
      * Initalize indicator width
      */
     private void initIndicatorWidth() {
-        ViewGroup.LayoutParams cusorParams = mScrollIndicator.getLayoutParams();
-        cusorParams.width = mIndicatorWidth;
-        mScrollIndicator.setLayoutParams(cusorParams);
+        mCusorParams = (LinearLayout.LayoutParams) mScrollIndicator.getLayoutParams();
+        mCusorParams.width = mIndicatorWidth;
+        mScrollIndicator.setLayoutParams(mCusorParams);
     }
 
     private void initData() {
         mListeneFragment = ListenFragment.getInstance();
         mWatchFragment = WatchFragment.getInstance();
         mSingFragment = SingFragment.getInstance();
+
+        mFragments = new ArrayList<BaseFragment>();
         mFragments.add(mListeneFragment);
         mFragments.add(mWatchFragment);
         mFragments.add(mSingFragment);
-        mHomePagerAdapter = new SlideHomePagerAdapter(this, mFragments);
+        mHomePagerAdapter = new SlideHomePagerAdapter(this, getSupportFragmentManager(),
+                mFragments);
         mHomeViewPager.setAdapter(mHomePagerAdapter);
 
         if (null == mBtnsWidth) {
@@ -180,24 +185,27 @@ public class HomeActivity extends BaseActivity {
 
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            scrollX =
+            int leftMargin = (int) (mCusorParams.width * (position + positionOffset));
+            mCusorParams.leftMargin = leftMargin;
+            mScrollIndicator.setLayoutParams(mCusorParams);
         }
 
         @Override
         public void onPageSelected(int position) {
-
+            mHomeViewPager.setCurrentItem(position);
         }
 
         @Override
         public void onPageScrollStateChanged(int state) {
-            doIndicatorAnim();
+
         }
     }
 
     /**
      * The movement animtion effect
      *
-     * @param position
+     * @param curLocation
+     * @param desLocation
      */
     private void doIndicatorAnim(int curLocation, int desLocation) {
         TranslateAnimation animation = new TranslateAnimation(curLocation, desLocation, 0f, 0f);

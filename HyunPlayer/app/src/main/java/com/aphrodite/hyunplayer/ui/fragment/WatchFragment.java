@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.aphrodite.hyunplayer.R;
 import com.aphrodite.hyunplayer.ui.base.BaseFragment;
 
 /**
@@ -27,6 +28,7 @@ public class WatchFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
             Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View contentView = inflater.inflate(R.layout.user_guide_page, container,false);
+        return contentView;
     }
 }
