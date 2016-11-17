@@ -1,7 +1,6 @@
 package com.aphrodite.hyunplayer.ui.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,11 +23,10 @@ public class ListenFragment extends BaseFragment {
         return sListenFragment;
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
-            Bundle savedInstanceState) {
-        View contentView = inflater.inflate(R.layout.user_guide_page, container,false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View contentView = inflater.inflate(R.layout.fragment_listen, container, false);
         return contentView;
     }
 }

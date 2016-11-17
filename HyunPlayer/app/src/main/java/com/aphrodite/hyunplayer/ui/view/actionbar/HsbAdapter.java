@@ -1,7 +1,6 @@
-package com.aphrodite.hyunplayer.ui.view.bar;
+package com.aphrodite.hyunplayer.ui.view.actionbar;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;

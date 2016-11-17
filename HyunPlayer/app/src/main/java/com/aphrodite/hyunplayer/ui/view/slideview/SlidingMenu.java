@@ -31,6 +31,8 @@ public class SlidingMenu extends HorizontalScrollView {
     private ViewGroup mMenu;
     private ViewGroup mContent;
 
+    private SlidingMenuListener menuListener;
+
     public SlidingMenu(Context context) {
         this(context, null, 0);
     }
@@ -94,9 +96,11 @@ public class SlidingMenu extends HorizontalScrollView {
                 if (scrollX > mHalfMenuWidth) {
                     this.smoothScrollTo(mMenuWidth, 0);
                     isOpen = false;
+                    menuListener.close();
                 } else {
                     this.smoothScrollTo(0, 0);
                     isOpen = true;
+                    menuListener.open();
                 }
             }
             return true;
@@ -110,12 +114,14 @@ public class SlidingMenu extends HorizontalScrollView {
         }
         this.smoothScrollTo(0, 0);
         isOpen = true;
+        menuListener.open();
     }
 
     public void closeMenu() {
         if (isOpen) {
             this.smoothScrollTo(mMenuWidth, 0);
             isOpen = false;
+            menuListener.close();
         }
     }
 
@@ -146,5 +152,9 @@ public class SlidingMenu extends HorizontalScrollView {
         ViewHelper.setPivotY(mContent, mContent.getHeight() / 2);
         ViewHelper.setScaleX(mContent, rightScale);
         ViewHelper.setScaleY(mContent, rightScale);
+    }
+
+    public void setSlidingMenuListener(SlidingMenuListener menuListener) {
+        this.menuListener = menuListener;
     }
 }

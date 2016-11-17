@@ -4,7 +4,9 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
 import com.aphrodite.hyunplayer.ui.base.BaseFragment;
+
 import java.util.List;
 
 /**
@@ -15,10 +17,10 @@ public class SlideHomePagerAdapter extends FragmentPagerAdapter {
     private Context mContext;
     private List<BaseFragment> mFragments;
 
-    public SlideHomePagerAdapter(Context mContext, FragmentManager fm, List<BaseFragment>
+    public SlideHomePagerAdapter(Context context, FragmentManager fm, List<BaseFragment>
             fragments) {
         super(fm);
-        this.mContext = mContext;
+        this.mContext = context;
         this.mFragments = fragments;
     }
 

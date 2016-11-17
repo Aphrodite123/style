@@ -3,7 +3,6 @@ package com.aphrodite.hyunplayer.ui.activity;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
@@ -21,6 +20,9 @@ import com.aphrodite.hyunplayer.ui.base.BaseFragment;
 import com.aphrodite.hyunplayer.ui.fragment.ListenFragment;
 import com.aphrodite.hyunplayer.ui.fragment.SingFragment;
 import com.aphrodite.hyunplayer.ui.fragment.WatchFragment;
+import com.aphrodite.hyunplayer.ui.view.slideview.SlidingMenu;
+import com.aphrodite.hyunplayer.ui.view.slideview.SlidingMenuListener;
+import com.aphrodite.hyunplayer.ui.view.viewpager.SlideMenuViewPager;
 import com.viewpagerindicator.IconPageIndicator;
 
 import java.util.ArrayList;
@@ -43,12 +45,9 @@ public class HomeActivity extends BaseActivity {
     private SlideHomePagerAdapter mHomePagerAdapter;
 
     /**
-     * Horizontal scroll menu
+     * slide menu layout
      */
-//    private HeadHorizontalScrollBar mScrollMenu;
-    /**
-     * slide home layout
-     */
+    private SlidingMenu mSlidingMenu;
     private RelativeLayout mActionbarRL;
     private ImageView mActionbarLogout;
     private ImageView mActionbarListen;
@@ -56,7 +55,7 @@ public class HomeActivity extends BaseActivity {
     private ImageView mActionbarSing;
     private View mScrollIndicator;
     private ImageView mActionbarSearch;
-    private ViewPager mHomeViewPager;
+    private SlideMenuViewPager mSlideViewPager;
     /**
      * actionbar button widths
      */
@@ -76,9 +75,6 @@ public class HomeActivity extends BaseActivity {
     private WatchFragment mWatchFragment;
     private SingFragment mSingFragment;
 
-//    private HsbAdapter mHsbAdapter;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +85,7 @@ public class HomeActivity extends BaseActivity {
     }
 
     private void initView() {
+        mSlidingMenu = (SlidingMenu) findViewById(R.id.slide_menu);
         mUserGuideLayout = (RelativeLayout) findViewById(R.id.user_guide);
         mGuideViewPager = (ViewPager) findViewById(R.id.user_guide_viewpager);
         mGuideIconPageIndicator = (IconPageIndicator) findViewById(R.id.user_guide_indicator);
@@ -100,22 +97,23 @@ public class HomeActivity extends BaseActivity {
         mActionbarSing = (ImageView) findViewById(R.id.actionbar_sing);
         mScrollIndicator = (View) findViewById(R.id.actionbar_horizontal_scroll_indicator);
         mActionbarSearch = (ImageView) findViewById(R.id.actionbar_search);
-        mHomeViewPager = (ViewPager) findViewById(R.id.home_slide_vp);
-        mHomeViewPager.setOnPageChangeListener(new HomePageChangeListenr());
-
-//        mScrollMenu = (HeadHorizontalScrollBar) findViewById(R.id.slide_menu_hsb);
-    }
-
-    /**
-     * Initalize indicator width
-     */
-    private void initIndicatorWidth() {
-        mCusorParams = (LinearLayout.LayoutParams) mScrollIndicator.getLayoutParams();
-        mCusorParams.width = mIndicatorWidth;
-        mScrollIndicator.setLayoutParams(mCusorParams);
+        mSlideViewPager = (SlideMenuViewPager) findViewById(R.id.home_slide_vp);
+        mSlideViewPager.setOnPageChangeListener(new HomePageChangeListenr());
     }
 
     private void initData() {
+        mSlidingMenu.setSlidingMenuListener(new SlidingMenuListener() {
+            @Override
+            public void open() {
+                mSlideViewPager.setScrollable(false);
+            }
+
+            @Override
+            public void close() {
+                mSlideViewPager.setScrollable(true);
+            }
+        });
+
         mListeneFragment = ListenFragment.getInstance();
         mWatchFragment = WatchFragment.getInstance();
         mSingFragment = SingFragment.getInstance();
@@ -126,17 +124,23 @@ public class HomeActivity extends BaseActivity {
         mFragments.add(mSingFragment);
         mHomePagerAdapter = new SlideHomePagerAdapter(this, getSupportFragmentManager(),
                 mFragments);
-        mHomeViewPager.setAdapter(mHomePagerAdapter);
+        mSlideViewPager.setAdapter(mHomePagerAdapter);
 
         if (null == mBtnsWidth) {
             mBtnsWidth = new int[]{mActionbarListen.getWidth(), mActionbarWatch.getWidth(),
                     mActionbarSing.getWidth()};
         }
         mIndicatorWidth = mActionbarListen.getWidth();
-        initIndicatorWidth();
-//        mHsbAdapter = new HsbAdapter(this);
-//        mScrollMenu.setAdapter(mHsbAdapter);
+//        initIndicatorWidth();
+    }
 
+    /**
+     * Initalize indicator width
+     */
+    private void initIndicatorWidth() {
+        mCusorParams = (LinearLayout.LayoutParams) mScrollIndicator.getLayoutParams();
+        mCusorParams.width = mIndicatorWidth;
+        mScrollIndicator.setLayoutParams(mCusorParams);
     }
 
     private boolean firstLogin() {
@@ -192,7 +196,7 @@ public class HomeActivity extends BaseActivity {
 
         @Override
         public void onPageSelected(int position) {
-            mHomeViewPager.setCurrentItem(position);
+            mSlideViewPager.setCurrentItem(position);
         }
 
         @Override

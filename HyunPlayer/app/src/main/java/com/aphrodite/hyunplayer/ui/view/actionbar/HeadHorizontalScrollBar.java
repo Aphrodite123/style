@@ -1,4 +1,4 @@
-package com.aphrodite.hyunplayer.ui.view.bar;
+package com.aphrodite.hyunplayer.ui.view.actionbar;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;

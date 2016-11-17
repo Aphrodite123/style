@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:slid="http://schemas.android.com/apk/res/com.aphrodite.hyunplayer"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/slide_menu"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:background="@drawable/img_frame_background"
@@ -17,7 +18,7 @@
 
         <include layout="@layout/layout_menu"/>
 
-        <include layout="@layout/layout_slide_home"/>
+        <include layout="@layout/layout_slide_content"/>
 
     </LinearLayout>
 

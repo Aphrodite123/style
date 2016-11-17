@@ -1,6 +1,5 @@
-package com.aphrodite.hyunplayer.ui.view.bar;
+package com.aphrodite.hyunplayer.ui.view.actionbar;
 
-import android.app.Fragment;
 import android.view.View;
 
 import com.aphrodite.hyunplayer.ui.base.BaseFragment;
