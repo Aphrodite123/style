@@ -2,6 +2,7 @@ package com.aphrodite.hyunplayer.ui.activity;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
@@ -45,7 +46,7 @@ public class HomeActivity extends BaseActivity {
     private SlideHomePagerAdapter mHomePagerAdapter;
 
     /**
-     * slide menu layout
+     * Slide menu layout
      */
     private SlidingMenu mSlidingMenu;
     private RelativeLayout mActionbarRL;
@@ -57,16 +58,16 @@ public class HomeActivity extends BaseActivity {
     private ImageView mActionbarSearch;
     private SlideMenuViewPager mSlideViewPager;
     /**
-     * actionbar button widths
+     * Actionbar button widths
      */
     private int[] mBtnsWidth;
     /**
-     * each tab of width
+     * Each tab of width
      */
     private int mIndicatorWidth;
     private LinearLayout.LayoutParams mCusorParams;
     /**
-     * current indicator loaction
+     * Current indicator loaction
      */
     private int mCurIndicatorLocation = 0;
 
@@ -98,7 +99,7 @@ public class HomeActivity extends BaseActivity {
         mScrollIndicator = (View) findViewById(R.id.actionbar_horizontal_scroll_indicator);
         mActionbarSearch = (ImageView) findViewById(R.id.actionbar_search);
         mSlideViewPager = (SlideMenuViewPager) findViewById(R.id.home_slide_vp);
-        mSlideViewPager.setOnPageChangeListener(new HomePageChangeListenr());
+//        mSlideViewPager.setOnPageChangeListener(new HomePageChangeListenr());
     }
 
     private void initData() {
@@ -131,13 +132,15 @@ public class HomeActivity extends BaseActivity {
                     mActionbarSing.getWidth()};
         }
         mIndicatorWidth = mActionbarListen.getWidth();
-//        initIndicatorWidth();
+        initIndicatorWidth();
     }
 
     /**
      * Initalize indicator width
      */
     private void initIndicatorWidth() {
+        Log.d(TAG, "mIndicatorWidth=" + mIndicatorWidth);
+
         mCusorParams = (LinearLayout.LayoutParams) mScrollIndicator.getLayoutParams();
         mCusorParams.width = mIndicatorWidth;
         mScrollIndicator.setLayoutParams(mCusorParams);

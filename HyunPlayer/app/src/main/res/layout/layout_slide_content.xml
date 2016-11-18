@@ -30,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
+                android:layout_alignParentBottom="true"
                 android:scrollbars="none">
 
                 <LinearLayout
@@ -53,19 +54,21 @@
                             android:id="@+id/actionbar_watch"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/actionbar_watch_selected"/>
+                            android:src="@drawable/actionbar_watch_selected"
+                            android:layout_marginLeft="10dp"/>
 
                         <ImageView
                             android:id="@+id/actionbar_sing"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/actionbar_sing_selected"/>
+                            android:src="@drawable/actionbar_sing_selected"
+                            android:layout_marginLeft="10dp"/>
                     </LinearLayout>
 
                     <!-- indicator -->
                     <View
                         android:id="@+id/actionbar_horizontal_scroll_indicator"
-                        android:layout_width="wrap_content"
+                        android:layout_width="35dp"
                         android:layout_height="1dp"
                         android:background="@android:color/white"/>
                 </LinearLayout>
