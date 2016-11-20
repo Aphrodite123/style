@@ -2,6 +2,7 @@ package com.aphrodite.hyunplayer.util;
 
 import android.content.Context;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.view.WindowManager;
 
 /**
@@ -35,6 +36,23 @@ public class MeasureUtils {
 
     public int getScreenHeight() {
         return metrics.heightPixels;   //Screen height (dip,exmple: 1dip)
+    }
+
+    /**
+     * Get the width of widget
+     *
+     * @param v
+     * @return
+     */
+
+    public int getWidgetWidth(View v) {
+        int w = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        if (null == v) {
+            return 0;
+        }
+        v.measure(w, h);
+        return v.getMeasuredWidth();
     }
 
 }
