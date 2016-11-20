@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:id="@+id/slide_home_rl"
+<FrameLayout android:id="@+id/slide_home_rl"
+             xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="match_parent"
              android:layout_height="match_parent">
 
@@ -24,55 +24,47 @@
                 android:layout_marginLeft="10dp"
                 android:src="@drawable/actionbar_logout_default"/>
 
-            <HorizontalScrollView
-                android:id="@+id/actionbar_hsv"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
                 android:layout_alignParentBottom="true"
-                android:scrollbars="none">
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/actionbar_ll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:id="@+id/actionbar_ll"
+                    <ImageView
+                        android:id="@+id/actionbar_listen"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:background="@drawable/actionbar_listen_bg_selected"/>
 
-                        <ImageView
-                            android:id="@+id/actionbar_listen"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/actionbar_listen_selected"/>
+                    <ImageView
+                        android:id="@+id/actionbar_watch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="35dp"
+                        android:src="@drawable/actionbar_watch_bg_selected"/>
 
-                        <ImageView
-                            android:id="@+id/actionbar_watch"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/actionbar_watch_selected"
-                            android:layout_marginLeft="10dp"/>
-
-                        <ImageView
-                            android:id="@+id/actionbar_sing"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/actionbar_sing_selected"
-                            android:layout_marginLeft="10dp"/>
-                    </LinearLayout>
-
-                    <!-- indicator -->
-                    <View
-                        android:id="@+id/actionbar_horizontal_scroll_indicator"
-                        android:layout_width="35dp"
-                        android:layout_height="1dp"
-                        android:background="@android:color/white"/>
+                    <ImageView
+                        android:id="@+id/actionbar_sing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="35dp"
+                        android:src="@drawable/actionbar_sing_bg_selected"/>
                 </LinearLayout>
-            </HorizontalScrollView>
+
+                <!-- indicator -->
+                <ImageView
+                    android:id="@+id/actionbar_horizontal_scroll_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:src="@android:color/white"/>
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/actionbar_search"
@@ -81,7 +73,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/actionbar_search_selected"/>
+                android:src="@drawable/actionbar_search_bg_selected"/>
         </RelativeLayout>
 
         <com.aphrodite.hyunplayer.ui.view.viewpager.SlideMenuViewPager

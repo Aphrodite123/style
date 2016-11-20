@@ -2,10 +2,7 @@ package com.aphrodite.hyunplayer.ui.activity;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.View;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,12 +21,13 @@ import com.aphrodite.hyunplayer.ui.fragment.WatchFragment;
 import com.aphrodite.hyunplayer.ui.view.slideview.SlidingMenu;
 import com.aphrodite.hyunplayer.ui.view.slideview.SlidingMenuListener;
 import com.aphrodite.hyunplayer.ui.view.viewpager.SlideMenuViewPager;
+import com.aphrodite.hyunplayer.util.MeasureUtils;
 import com.viewpagerindicator.IconPageIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeActivity extends BaseActivity {
+public class HomeActivity extends BaseActivity implements View.OnClickListener {
     private static final String TAG = HomeActivity.class.getSimpleName();
     private RelativeLayout mUserGuideLayout;
     private ViewPager mGuideViewPager;
@@ -51,10 +49,11 @@ public class HomeActivity extends BaseActivity {
     private SlidingMenu mSlidingMenu;
     private RelativeLayout mActionbarRL;
     private ImageView mActionbarLogout;
+    private LinearLayout mActionbarLL;
     private ImageView mActionbarListen;
     private ImageView mActionbarWatch;
     private ImageView mActionbarSing;
-    private View mScrollIndicator;
+    private ImageView mScrollIndicator;
     private ImageView mActionbarSearch;
     private SlideMenuViewPager mSlideViewPager;
     /**
@@ -65,16 +64,23 @@ public class HomeActivity extends BaseActivity {
      * Each tab of width
      */
     private int mIndicatorWidth;
+    private int mActionbarWidth;
     private LinearLayout.LayoutParams mCusorParams;
     /**
      * Current indicator loaction
      */
-    private int mCurIndicatorLocation = 0;
+    private int mCurrentIndex = 0;
 
     private List<BaseFragment> mFragments;
     private ListenFragment mListeneFragment;
     private WatchFragment mWatchFragment;
     private SingFragment mSingFragment;
+    /**
+     * The index of listen,watch and sing
+     */
+    private static int sListenIndex = 0;
+    private static int sWatchIndex = 1;
+    private static int sSingIndex = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,13 +99,19 @@ public class HomeActivity extends BaseActivity {
 
         mActionbarRL = (RelativeLayout) findViewById(R.id.actionbar_rl);
         mActionbarLogout = (ImageView) findViewById(R.id.actionbar_logout);
+        mActionbarLL = (LinearLayout) findViewById(R.id.actionbar_ll);
         mActionbarListen = (ImageView) findViewById(R.id.actionbar_listen);
         mActionbarWatch = (ImageView) findViewById(R.id.actionbar_watch);
         mActionbarSing = (ImageView) findViewById(R.id.actionbar_sing);
-        mScrollIndicator = (View) findViewById(R.id.actionbar_horizontal_scroll_indicator);
+        mScrollIndicator = (ImageView) findViewById(R.id.actionbar_horizontal_scroll_indicator);
         mActionbarSearch = (ImageView) findViewById(R.id.actionbar_search);
         mSlideViewPager = (SlideMenuViewPager) findViewById(R.id.home_slide_vp);
-//        mSlideViewPager.setOnPageChangeListener(new HomePageChangeListenr());
+        mSlideViewPager.setOnPageChangeListener(new HomePageChangeListenr());
+
+        mActionbarListen.setPressed(true);
+        mActionbarWatch.setPressed(false);
+        mActionbarSing.setPressed(false);
+        mActionbarSearch.setPressed(false);
     }
 
     private void initData() {
@@ -131,7 +143,8 @@ public class HomeActivity extends BaseActivity {
             mBtnsWidth = new int[]{mActionbarListen.getWidth(), mActionbarWatch.getWidth(),
                     mActionbarSing.getWidth()};
         }
-        mIndicatorWidth = mActionbarListen.getWidth();
+        mCusorParams = (LinearLayout.LayoutParams) mScrollIndicator.getLayoutParams();
+
         initIndicatorWidth();
     }
 
@@ -139,8 +152,10 @@ public class HomeActivity extends BaseActivity {
      * Initalize indicator width
      */
     private void initIndicatorWidth() {
-        Log.d(TAG, "mIndicatorWidth=" + mIndicatorWidth);
-
+        mActionbarWidth = MeasureUtils.getInstance(HomeActivity.this).getWidgetWidth
+                (mActionbarLL);
+        mIndicatorWidth = MeasureUtils.getInstance(HomeActivity.this).getWidgetWidth
+                (mActionbarListen);
         mCusorParams = (LinearLayout.LayoutParams) mScrollIndicator.getLayoutParams();
         mCusorParams.width = mIndicatorWidth;
         mScrollIndicator.setLayoutParams(mCusorParams);
@@ -187,38 +202,84 @@ public class HomeActivity extends BaseActivity {
         mGuideIconPageIndicator.setViewPager(mGuideViewPager);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.actionbar_logout:
+                break;
+            case R.id.actionbar_listen:
+                setBarOnClickEvent(R.id.actionbar_listen);
+                break;
+            case R.id.actionbar_watch:
+                setBarOnClickEvent(R.id.actionbar_listen);
+                break;
+            case R.id.actionbar_sing:
+                setBarOnClickEvent(R.id.actionbar_listen);
+                break;
+            case R.id.actionbar_search:
+                break;
+        }
+    }
+
+    private void setBarOnClickEvent(int id) {
+//        if(){
+//
+//        }
+    }
+
     private class HomePageChangeListenr implements ViewPager.OnPageChangeListener {
-        int scrollX;
 
         @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            int leftMargin = (int) (mCusorParams.width * (position + positionOffset));
-            mCusorParams.leftMargin = leftMargin;
-            mScrollIndicator.setLayoutParams(mCusorParams);
+        public void onPageScrolled(int position, float offset, int positionOffsetPixels) {
+            scrollIndicator(position, offset);
         }
 
         @Override
         public void onPageSelected(int position) {
-            mSlideViewPager.setCurrentItem(position);
+            mCurrentIndex = position;
+            if (sWatchIndex == mCurrentIndex) {
+                mActionbarWatch.setPressed(true);
+                mActionbarListen.setPressed(false);
+                mActionbarSing.setPressed(false);
+            } else if (sSingIndex == mCurrentIndex) {
+                mActionbarSing.setPressed(true);
+                mActionbarListen.setPressed(false);
+                mActionbarWatch.setPressed(false);
+            } else {
+                mActionbarListen.setPressed(true);
+                mActionbarWatch.setPressed(false);
+                mActionbarSing.setPressed(false);
+            }
         }
 
         @Override
         public void onPageScrollStateChanged(int state) {
 
         }
-    }
 
-    /**
-     * The movement animtion effect
-     *
-     * @param curLocation
-     * @param desLocation
-     */
-    private void doIndicatorAnim(int curLocation, int desLocation) {
-        TranslateAnimation animation = new TranslateAnimation(curLocation, desLocation, 0f, 0f);
-        animation.setInterpolator(new LinearInterpolator());
-        animation.setFillAfter(true);
-        animation.setDuration(100);
-        mScrollIndicator.startAnimation(animation);
+        private void scrollIndicator(int position, float offset) {
+            int space = (int) ((mActionbarWidth - mIndicatorWidth * 3) * 1.0 / 2);
+            int shift = space + mIndicatorWidth;
+            /**
+             * Mark three pages,respectively:0,1,2
+             * 0->1; 1->2; 2->1; 1->0
+             */
+            if (mCurrentIndex == 0 && position == 0)// 0->1
+            {
+                mCusorParams.leftMargin = (int) ((offset + mCurrentIndex) * shift);
+
+            } else if (mCurrentIndex == 1 && position == 0) // 1->0
+            {
+                mCusorParams.leftMargin = (int) ((-(1 - offset) + mCurrentIndex) * shift);
+
+            } else if (mCurrentIndex == 1 && position == 1) // 1->2
+            {
+                mCusorParams.leftMargin = (int) ((offset + mCurrentIndex * shift));
+            } else if (mCurrentIndex == 2 && position == 1) // 2->1
+            {
+                mCusorParams.leftMargin = (int) ((-(1 - offset) + mCurrentIndex) * shift);
+            }
+            mScrollIndicator.setLayoutParams(mCusorParams);
+        }
     }
 }
