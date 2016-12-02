@@ -101,8 +101,11 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         mActionbarLogout = (ImageView) findViewById(R.id.actionbar_logout);
         mActionbarLL = (LinearLayout) findViewById(R.id.actionbar_ll);
         mActionbarListen = (ImageView) findViewById(R.id.actionbar_listen);
+        mActionbarListen.setOnClickListener(this);
         mActionbarWatch = (ImageView) findViewById(R.id.actionbar_watch);
+        mActionbarWatch.setOnClickListener(this);
         mActionbarSing = (ImageView) findViewById(R.id.actionbar_sing);
+        mActionbarSing.setOnClickListener(this);
         mScrollIndicator = (ImageView) findViewById(R.id.actionbar_horizontal_scroll_indicator);
         mActionbarSearch = (ImageView) findViewById(R.id.actionbar_search);
         mSlideViewPager = (SlideMenuViewPager) findViewById(R.id.home_slide_vp);
@@ -161,6 +164,11 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         mScrollIndicator.setLayoutParams(mCusorParams);
     }
 
+    /**
+     * Is the first time login
+     *
+     * @return
+     */
     private boolean firstLogin() {
         boolean isFirstLogin = HyApplication.getApp().firstLogin();
         if (isFirstLogin) {
@@ -169,6 +177,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         return isFirstLogin;
     }
 
+    /**
+     * The guide of first login
+     */
     private void showGuide() {
         SharePrefManager.putBoolean(SharePrefManager
                 .KEY_ACCOUNT_FIRST_LOGIN, false);
@@ -222,9 +233,23 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void setBarOnClickEvent(int id) {
-//        if(){
-//
-//        }
+        if (mCurrentIndex == id) {
+            return;
+        } else {
+            if (sWatchIndex == id) {
+                mActionbarWatch.setPressed(true);
+                mActionbarListen.setPressed(false);
+                mActionbarSing.setPressed(false);
+            } else if (sSingIndex == id) {
+                mActionbarSing.setPressed(true);
+                mActionbarListen.setPressed(false);
+                mActionbarWatch.setPressed(false);
+            } else {
+                mActionbarListen.setPressed(true);
+                mActionbarWatch.setPressed(false);
+                mActionbarSing.setPressed(false);
+            }
+        }
     }
 
     private class HomePageChangeListenr implements ViewPager.OnPageChangeListener {
