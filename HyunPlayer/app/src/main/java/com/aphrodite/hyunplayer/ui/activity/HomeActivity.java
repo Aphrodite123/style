@@ -111,10 +111,10 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         mSlideViewPager = (SlideMenuViewPager) findViewById(R.id.home_slide_vp);
         mSlideViewPager.setOnPageChangeListener(new HomePageChangeListenr());
 
-        mActionbarListen.setPressed(true);
-        mActionbarWatch.setPressed(false);
-        mActionbarSing.setPressed(false);
-        mActionbarSearch.setPressed(false);
+        mActionbarListen.setSelected(true);
+        mActionbarWatch.setSelected(false);
+        mActionbarSing.setSelected(false);
+        mActionbarSearch.setSelected(false);
     }
 
     private void initData() {
@@ -219,13 +219,13 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
             case R.id.actionbar_logout:
                 break;
             case R.id.actionbar_listen:
-                setBarOnClickEvent(R.id.actionbar_listen);
+                setBarOnClickEvent(sListenIndex);
                 break;
             case R.id.actionbar_watch:
-                setBarOnClickEvent(R.id.actionbar_listen);
+                setBarOnClickEvent(sWatchIndex);
                 break;
             case R.id.actionbar_sing:
-                setBarOnClickEvent(R.id.actionbar_listen);
+                setBarOnClickEvent(sSingIndex);
                 break;
             case R.id.actionbar_search:
                 break;
@@ -237,19 +237,23 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
             return;
         } else {
             if (sWatchIndex == id) {
-                mActionbarWatch.setPressed(true);
-                mActionbarListen.setPressed(false);
-                mActionbarSing.setPressed(false);
+                mActionbarWatch.setSelected(true);
+                mActionbarListen.setSelected(false);
+                mActionbarSing.setSelected(false);
             } else if (sSingIndex == id) {
-                mActionbarSing.setPressed(true);
-                mActionbarListen.setPressed(false);
-                mActionbarWatch.setPressed(false);
+                mActionbarSing.setSelected(true);
+                mActionbarListen.setSelected(false);
+                mActionbarWatch.setSelected(false);
             } else {
-                mActionbarListen.setPressed(true);
-                mActionbarWatch.setPressed(false);
-                mActionbarSing.setPressed(false);
+                mActionbarListen.setSelected(true);
+                mActionbarWatch.setSelected(false);
+                mActionbarSing.setSelected(false);
             }
         }
+        mCurrentIndex = id;
+
+        mSlideViewPager.setCurrentItem(mCurrentIndex);
+        mSlideViewPager.setScrollable(true);
     }
 
     private class HomePageChangeListenr implements ViewPager.OnPageChangeListener {
@@ -263,17 +267,17 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         public void onPageSelected(int position) {
             mCurrentIndex = position;
             if (sWatchIndex == mCurrentIndex) {
-                mActionbarWatch.setPressed(true);
-                mActionbarListen.setPressed(false);
-                mActionbarSing.setPressed(false);
+                mActionbarWatch.setSelected(true);
+                mActionbarListen.setSelected(false);
+                mActionbarSing.setSelected(false);
             } else if (sSingIndex == mCurrentIndex) {
-                mActionbarSing.setPressed(true);
-                mActionbarListen.setPressed(false);
-                mActionbarWatch.setPressed(false);
+                mActionbarSing.setSelected(true);
+                mActionbarListen.setSelected(false);
+                mActionbarWatch.setSelected(false);
             } else {
-                mActionbarListen.setPressed(true);
-                mActionbarWatch.setPressed(false);
-                mActionbarSing.setPressed(false);
+                mActionbarListen.setSelected(true);
+                mActionbarWatch.setSelected(false);
+                mActionbarSing.setSelected(false);
             }
         }
 

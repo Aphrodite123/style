@@ -19,4 +19,11 @@
     <string name="menus_funny">搞笑</string>
     <string name="menus_child">少儿</string>
     <string name="menus_original">原创</string>
+
+    <!-- fragment listen -->
+    <string name="listen_like">喜欢</string>
+    <string name="listen_playlist">歌单</string>
+    <string name="listen_download">下载</string>
+    <string name="listen_recent">最近</string>
+
 </resources>
