@@ -8,4 +8,9 @@
     <color name="button_disable">#DEDEDE</color>
     <color name="green_button_pressed">#16B388</color>
     <color name="green_button_normal">#23B990</color>
+
+    <!-- fragment listen -->
+    <color name="fragment_listen_navigation_pressed">#ff72aad6</color>
+    <color name="skin_line">#24000000</color>
+
 </resources>

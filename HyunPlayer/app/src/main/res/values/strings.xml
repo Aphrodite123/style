@@ -19,4 +19,11 @@
     <string name="menus_funny">Funny</string>
     <string name="menus_child">Child</string>
     <string name="menus_original">Original</string>
+
+    <!-- fragment listen -->
+    <string name="listen_like">Like</string>
+    <string name="listen_playlist">Playlist</string>
+    <string name="listen_download">Download</string>
+    <string name="listen_recent">Recent</string>
+
 </resources>
