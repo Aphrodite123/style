@@ -100,8 +100,29 @@
             android:layout_marginTop="@dimen/navigation_top_margin"/>
 
         <RelativeLayout
+            android:id="@+id/local_music"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/listen_local_music"
+                android:textColor="@android:color/white"/>
+
+            <TextView
+                android:id="@+id/local_music_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/local_musics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="26"
+                android:textColor="@color/fragment_listen_navigation_pressed"/>
 
         </RelativeLayout>
     </LinearLayout>

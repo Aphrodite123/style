@@ -26,4 +26,6 @@
     <string name="listen_download">Download</string>
     <string name="listen_recent">Recent</string>
 
+    <string name="listen_local_music">Local music</string>
+
 </resources>

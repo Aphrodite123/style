@@ -26,4 +26,6 @@
     <string name="listen_download">下载</string>
     <string name="listen_recent">最近</string>
 
+    <string name="listen_local_music">本地音乐</string>
+
 </resources>

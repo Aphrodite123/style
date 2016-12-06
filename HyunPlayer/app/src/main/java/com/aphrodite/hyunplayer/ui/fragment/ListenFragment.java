@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.aphrodite.hyunplayer.R;
@@ -22,6 +23,8 @@ public class ListenFragment extends BaseFragment implements View.OnClickListener
     private TextView mPlaylist;
     private TextView mDownload;
     private TextView mRecent;
+
+    private RelativeLayout mLocalMusicItem;
 
     /**
      * The index of like,playlist,download and recent
@@ -54,10 +57,14 @@ public class ListenFragment extends BaseFragment implements View.OnClickListener
         mDownload = (TextView) v.findViewById(R.id.listen_download_info);
         mRecent = (TextView) v.findViewById(R.id.listen_recent_info);
 
+        mLocalMusicItem = (RelativeLayout) v.findViewById(R.id.local_music);
+
         mLike.setOnClickListener(this);
         mPlaylist.setOnClickListener(this);
         mDownload.setOnClickListener(this);
         mRecent.setOnClickListener(this);
+
+        mLocalMusicItem.setOnClickListener(this);
     }
 
     @Override
@@ -78,6 +85,9 @@ public class ListenFragment extends BaseFragment implements View.OnClickListener
             case R.id.listen_recent_info:
                 mCurrentIndex = sRecentIndex;
                 setBtnFocus(mCurrentIndex);
+                break;
+            case R.id.local_music:
+                //TODO 本地音乐
                 break;
             default:
                 break;
