@@ -16,4 +16,8 @@
 
     <!-- home activity -->
     <dimen name="menu_textview_size">14dp</dimen>
+
+    <!-- fragment listen -->
+    <dimen name="navigation_top_margin">10dp</dimen>
+
 </resources>

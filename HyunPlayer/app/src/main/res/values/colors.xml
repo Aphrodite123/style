@@ -11,6 +11,6 @@
 
     <!-- fragment listen -->
     <color name="fragment_listen_navigation_pressed">#ff72aad6</color>
-    <color name="skin_line">#24000000</color>
+    <color name="skin_line">#ff72aad6</color>
 
 </resources>

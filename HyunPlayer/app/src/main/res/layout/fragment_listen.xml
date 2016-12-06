@@ -7,85 +7,103 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/listen_like_ll"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
+            android:layout_marginTop="@dimen/navigation_top_margin"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/listen_like_info"
+            <LinearLayout
+                android:id="@+id/listen_like_ll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableTop="@drawable/fragement_listen_like_selected"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/listen_like"
-                android:textColor="@android:color/white"/>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/listen_like_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/fragement_listen_like_selected"
+                    android:gravity="center"
+                    android:text="@string/listen_like"
+                    android:textColor="@android:color/white"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/listen_playlist_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/listen_playlist_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/fragment_listen_playlist_selected"
+                    android:gravity="center"
+                    android:text="@string/listen_playlist"
+                    android:textColor="@android:color/white"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/listen_download_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/listen_download_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/fragment_listen_download_selected"
+                    android:gravity="center"
+                    android:text="@string/listen_download"
+                    android:textColor="@android:color/white"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/listen_recent_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/listen_recent_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/fragment_listen_recent_selected"
+                    android:gravity="center"
+                    android:text="@string/listen_recent"
+                    android:textColor="@android:color/white"/>
+            </LinearLayout>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/listen_playlist_ll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal">
+        <ImageView
+            style="@style/horizontal_line"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="@dimen/navigation_top_margin"/>
 
-            <TextView
-                android:id="@+id/listen_playlist_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/fragment_listen_playlist_selected"
-                android:gravity="center"
-                android:text="@string/listen_playlist"
-                android:textColor="@android:color/white"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/listen_download_ll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/listen_download_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/fragment_listen_download_selected"
-                android:gravity="center"
-                android:text="@string/listen_download"
-                android:textColor="@android:color/white"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/listen_recent_ll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/listen_recent_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/fragment_listen_recent_selected"
-                android:gravity="center"
-                android:text="@string/listen_recent"
-                android:textColor="#ff72aad6"/>
-            android:textColor="@android:color/white"/>
-        </LinearLayout>
-
+        </RelativeLayout>
     </LinearLayout>
 
 </ScrollView>
