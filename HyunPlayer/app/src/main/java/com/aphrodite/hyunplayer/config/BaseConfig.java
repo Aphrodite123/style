@@ -15,14 +15,22 @@ public class BaseConfig {
             File.separator;
     public static final String ROOT_PATH = SDCARD_PATH + "hyunplayer" + File.separator;
 
-    //log configuration
+    /**
+     * Log configuration
+     */
     public static final String LOG_FILE_PATH = ROOT_PATH + "logs" + File.separator;
     public static final String LOG_FILE_SUFFIX = ".log";
 
 
-    //activity welcome
+    /**
+     * Welcome activity
+     */
     public static final int COUNT_DOWN_READY = 0;
     public static final int COUNT_DOWN_END = 1;
 
-
+    /**
+     * Music format type
+     */
+    public static final String[] sMusicType = {".m4a", ".ac3", ".amr", ".ape", ".flac", ".mid", "" +
+            ".mp3", ".ogg", ".ra", ".wav", ".wma", ".acc", ".acc+"};
 }
