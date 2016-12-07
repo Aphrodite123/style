@@ -31,7 +31,7 @@
                     android:drawableTop="@drawable/fragement_listen_like_selected"
                     android:gravity="center"
                     android:text="@string/listen_like"
-                    android:textColor="@drawable/fragment_listen_download_selected"/>
+                    android:textColor="@drawable/fragment_listen_navigation_info_selected"/>
 
             </LinearLayout>
 
@@ -50,7 +50,7 @@
                     android:drawableTop="@drawable/fragment_listen_playlist_selected"
                     android:gravity="center"
                     android:text="@string/listen_playlist"
-                    android:textColor="@drawable/fragment_listen_download_selected"/>
+                    android:textColor="@drawable/fragment_listen_navigation_info_selected"/>
 
             </LinearLayout>
 
@@ -69,8 +69,7 @@
                     android:drawableTop="@drawable/fragment_listen_download_selected"
                     android:gravity="center"
                     android:text="@string/listen_download"
-                    android:textColor="android:textColor="
-                @drawable/fragment_listen_download_selected""/>
+                    android:textColor="@drawable/fragment_listen_navigation_info_selected"/>
 
             </LinearLayout>
 
@@ -89,7 +88,7 @@
                     android:drawableTop="@drawable/fragment_listen_recent_selected"
                     android:gravity="center"
                     android:text="@string/listen_recent"
-                    android:textColor="@drawable/fragment_listen_download_selected"/>
+                    android:textColor="@drawable/fragment_listen_navigation_info_selected"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -122,8 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="26"
-                android:textColor="@drawable/fragment_listen_download_selected"/>
+                android:text="26"/>
 
         </RelativeLayout>
     </LinearLayout>

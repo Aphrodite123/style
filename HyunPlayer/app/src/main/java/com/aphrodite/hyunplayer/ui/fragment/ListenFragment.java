@@ -1,13 +1,11 @@
 package com.aphrodite.hyunplayer.ui.fragment;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.aphrodite.hyunplayer.R;
 import com.aphrodite.hyunplayer.ui.base.BaseFragment;
 
@@ -100,46 +98,27 @@ public class ListenFragment extends BaseFragment implements View.OnClickListener
         }
         if (sLikeIndex == index) {
             mLike.setPressed(true);
-            mLike.setTextColor(getResources().getColor(R.color.fragment_listen_navigation_pressed));
             mPlaylist.setPressed(false);
-            mPlaylist.setTextColor(Color.WHITE);
             mDownload.setPressed(false);
-            mDownload.setTextColor(Color.WHITE);
             mRecent.setPressed(false);
-            mRecent.setTextColor(Color.WHITE);
             //TODO
         } else if (sPlaylistIndex == index) {
             mLike.setPressed(false);
-            mLike.setTextColor(Color.WHITE);
             mPlaylist.setPressed(true);
-            mPlaylist.setTextColor(getResources().getColor(R.color
-                    .fragment_listen_navigation_pressed));
             mDownload.setPressed(false);
-            mDownload.setTextColor(Color.WHITE);
             mRecent.setPressed(false);
-            mRecent.setTextColor(Color.WHITE);
             //TODO
         } else if (sDownloadIndex == index) {
             mLike.setPressed(false);
-            mLike.setTextColor(Color.WHITE);
             mPlaylist.setPressed(false);
-            mPlaylist.setTextColor(Color.WHITE);
             mDownload.setPressed(true);
-            mDownload.setTextColor(getResources().getColor(R.color
-                    .fragment_listen_navigation_pressed));
             mRecent.setPressed(false);
-            mRecent.setTextColor(Color.WHITE);
             //TODO
         } else {
             mLike.setPressed(false);
-            mLike.setTextColor(Color.WHITE);
             mPlaylist.setPressed(false);
-            mPlaylist.setTextColor(Color.WHITE);
             mDownload.setPressed(false);
-            mDownload.setTextColor(Color.WHITE);
             mRecent.setPressed(true);
-            mRecent.setTextColor(getResources().getColor(R.color
-                    .fragment_listen_navigation_pressed));
             //TODO
         }
     }

@@ -9,10 +9,10 @@ import android.os.Parcelable;
 
 public class Song implements Parcelable {
     private int id;
-    // Album
-    private Album album;
-    // Singer
-    private Artist artist;
+//    // Album
+//    private Album album;
+//    // Singer
+//    private Artist artist;
     //Song name
     private String name;
     // File name
