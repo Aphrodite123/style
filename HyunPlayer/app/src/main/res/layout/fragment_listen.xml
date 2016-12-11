@@ -105,24 +105,58 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical">
 
-            <TextView
+            <RelativeLayout
+                android:id="@+id/local_music_rl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/listen_local_music"
-                android:textColor="@android:color/white"/>
+                android:layout_marginStart="20dp">
 
-            <TextView
-                android:id="@+id/local_music_play"
+                <ImageView
+                    android:id="@+id/local_music_phone_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/skin_kg_navigation_local_music_normal"/>
+
+                <TextView
+                    android:id="@+id/local_music_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toRightOf="@id/local_music_phone_icon"
+                    android:text="@string/listen_local_music"
+                    android:textColor="@android:color/white"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/local_music_random_play_rl"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@id/local_music_rl">
 
-            <TextView
-                android:id="@+id/local_musics"
+                <ImageView
+                    android:id="@+id/local_music_random_play"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/local_music_random_play_selected"/>
+            </RelativeLayout>
+
+
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="26"/>
+                android:layout_centerVertical="true">
 
+                <TextView
+                    android:id="@+id/local_musics"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="26"/>
+            </RelativeLayout>
         </RelativeLayout>
     </LinearLayout>
 
