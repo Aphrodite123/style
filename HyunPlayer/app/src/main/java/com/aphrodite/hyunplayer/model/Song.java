@@ -9,10 +9,10 @@ import android.os.Parcelable;
 
 public class Song implements Parcelable {
     private int id;
-//    // Album
-//    private Album album;
-//    // Singer
-//    private Artist artist;
+    // Album
+    private Album album;
+    // Singer
+    private Artist artist;
     //Song name
     private String name;
     // File name
@@ -23,28 +23,166 @@ public class Song implements Parcelable {
     private int durationTime;
     // File size
     private int size;
-    //
+    //Whether love
     private boolean isLike;
-    // 歌词位置
+    // Lyric path
     private String lyricPath;
-    // 文件路径
+    // File path
     private String filePath;
-    // 播放列表的Id集合，它们之间用’$id$’分隔
+    // Playlist collection of ID
     private String playerList;
-    // 是否是网络音乐
+    // Whether network music
     private boolean isNet;
-    // MINE类型
-    private String mimeType;
-    // 是否是下载完成
+    // MINE type
+    private String mineType;
+    // Whether the download is complete
     private boolean isDownFinish;
 
-    protected Song(Parcel in) {
+    public Song() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Album getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
+
+    public Artist getArtist() {
+        return artist;
+    }
+
+    public void setArtist(Artist artist) {
+        this.artist = artist;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getNetUrl() {
+        return netUrl;
+    }
+
+    public void setNetUrl(String netUrl) {
+        this.netUrl = netUrl;
+    }
+
+    public int getDurationTime() {
+        return durationTime;
+    }
+
+    public void setDurationTime(int durationTime) {
+        this.durationTime = durationTime;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public boolean isLike() {
+        return isLike;
+    }
+
+    public void setLike(boolean like) {
+        isLike = like;
+    }
+
+    public String getLyricPath() {
+        return lyricPath;
+    }
+
+    public void setLyricPath(String lyricPath) {
+        this.lyricPath = lyricPath;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
+    public String getPlayerList() {
+        return playerList;
+    }
+
+    public void setPlayerList(String playerList) {
+        this.playerList = playerList;
+    }
+
+    public boolean isNet() {
+        return isNet;
+    }
+
+    public void setNet(boolean net) {
+        isNet = net;
+    }
+
+    public String getMineType() {
+        return mineType;
+    }
+
+    public void setMineType(String mineType) {
+        this.mineType = mineType;
+    }
+
+    public boolean isDownFinish() {
+        return isDownFinish;
+    }
+
+    public void setDownFinish(boolean downFinish) {
+        isDownFinish = downFinish;
     }
 
     public static final Creator<Song> CREATOR = new Creator<Song>() {
         @Override
-        public Song createFromParcel(Parcel in) {
-            return new Song(in);
+        public Song createFromParcel(Parcel source) {
+            Song song = new Song();
+            song.id = source.readInt();
+            song.album = (Album) source.readSerializable();
+            song.artist = (Artist) source.readSerializable();
+            song.name = source.readString();
+            song.fileName = source.readString();
+            song.netUrl = source.readString();
+            song.durationTime = source.readInt();
+            song.size = source.readInt();
+            boolean[] bools = new boolean[3];
+            source.readBooleanArray(bools);
+            song.isLike = bools[0];
+            song.isNet = bools[1];
+            song.isDownFinish = bools[2];
+            song.lyricPath = source.readString();
+            song.filePath = source.readString();
+            song.playerList = source.readString();
+            song.mineType = source.readString();
+            return song;
         }
 
         @Override
@@ -60,5 +198,18 @@ public class Song implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeSerializable(album);
+        dest.writeSerializable(artist);
+        dest.writeString(name);
+        dest.writeString(fileName);
+        dest.writeString(netUrl);
+        dest.writeInt(durationTime);
+        dest.writeInt(size);
+        dest.writeBooleanArray(new boolean[]{isLike, isNet, isDownFinish});
+        dest.writeString(lyricPath);
+        dest.writeString(filePath);
+        dest.writeString(playerList);
+        dest.writeString(mineType);
     }
 }

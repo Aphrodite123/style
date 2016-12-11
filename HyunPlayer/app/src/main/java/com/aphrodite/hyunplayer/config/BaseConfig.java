@@ -31,6 +31,6 @@ public class BaseConfig {
     /**
      * Music format type
      */
-    public static final String[] sMusicType = {".m4a", ".ac3", ".amr", ".ape", ".flac", ".mid", "" +
-            ".mp3", ".ogg", ".ra", ".wav", ".wma", ".acc", ".acc+"};
+    public static final String[] sMusicType = {"m4a", "ac3", "amr", "ape", "flac", "mid", "mp3",
+            "ogg", "ra", "wav", "wma", "acc", "acc+"};
 }
