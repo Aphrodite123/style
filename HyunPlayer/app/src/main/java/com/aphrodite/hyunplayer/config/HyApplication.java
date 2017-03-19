@@ -35,4 +35,8 @@ public class HyApplication extends Application {
                 .KEY_ACCOUNT_FIRST_LOGIN, true);
         return isFirstLogin;
     }
+
+    public static Context getHyContext() {
+        return mHyApplication.getApplicationContext();
+    }
 }

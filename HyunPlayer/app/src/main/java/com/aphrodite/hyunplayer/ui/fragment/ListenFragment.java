@@ -1,13 +1,29 @@
 package com.aphrodite.hyunplayer.ui.fragment;
 
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.aphrodite.hyunplayer.R;
+import com.aphrodite.hyunplayer.cache.ISongCache;
+import com.aphrodite.hyunplayer.cache.impl.SongCacheImpl;
+import com.aphrodite.hyunplayer.config.BaseConfig;
+import com.aphrodite.hyunplayer.config.HyApplication;
+import com.aphrodite.hyunplayer.model.Song;
 import com.aphrodite.hyunplayer.ui.base.BaseFragment;
+import com.aphrodite.hyunplayer.util.FileSearchUtils;
+import com.aphrodite.hyunplayer.util.Logger;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.aphrodite.hyunplayer.config.BaseConfig.SDCARD_PATH;
 
 /**
  * Created by Administrator on 2016/11/16.
@@ -34,6 +50,10 @@ public class ListenFragment extends BaseFragment implements View.OnClickListener
 
     private int mCurrentIndex = -1;
 
+    private List<Song> mSongs = new ArrayList<Song>();
+
+    private ISongCache songCache;
+
     public static synchronized ListenFragment getInstance() {
         if (null == sListenFragment) {
             sListenFragment = new ListenFragment();
@@ -46,6 +66,14 @@ public class ListenFragment extends BaseFragment implements View.OnClickListener
                              Bundle savedInstanceState) {
         View contentView = inflater.inflate(R.layout.fragment_listen, container, false);
         initView(contentView);
+        songCache = SongCacheImpl.getInstance();
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                mSongs = songCache.getSongs();
+            }
+        };
+        thread.start();
         return contentView;
     }
 
