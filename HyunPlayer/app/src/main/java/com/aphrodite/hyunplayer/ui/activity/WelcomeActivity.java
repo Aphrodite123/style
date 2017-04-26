@@ -56,6 +56,7 @@ public class WelcomeActivity extends BaseActivity {
     private void enterHomeActivity() {
         Intent intent = new Intent(IntentAction.HomeActivityAction.ACTION);
         startActivity(intent);
+        this.finish();
     }
 
     //Count down and update layout

@@ -6,6 +6,11 @@
     <!-- welcome activity -->
     <dimen name="activity_welcome_countdown_margin">10dp</dimen>
 
+    <!-- hyunplayer activity -->
+    <dimen name="activity_hyunplayer_actionbar_width">65dp</dimen>
+    <dimen name="activity_hyunplayer_actionbar_top_margin">20dp</dimen>
+    <dimen name="activity_hyunplayer_logout_left_margin">10dp</dimen>
+
     <!-- user guide -->
     <dimen name="user_guide_introductory_top_margin">63dp</dimen>
     <dimen name="user_guide_img_top_margin">30dp</dimen>
@@ -19,5 +24,7 @@
 
     <!-- fragment listen -->
     <dimen name="navigation_top_margin">10dp</dimen>
+    <dimen name="local_musics_margin">10dp</dimen>
+
 
 </resources>

@@ -10,7 +10,9 @@
     <color name="green_button_normal">#23B990</color>
 
     <!-- fragment listen -->
-    <color name="fragment_listen_navigation_pressed">#ff72aad6</color>
-    <color name="skin_line">#ff72aad6</color>
+    <color name="fragment_listen_navigation_pressed">#FF72AAD6</color>
+    <color name="skin_line">#FF72AAD6</color>
+    <color name="local_musics_count_text">#AAF3F6FB</color>
+    <color name="fragment_listen_divider">#DBDBDB</color>
 
 </resources>

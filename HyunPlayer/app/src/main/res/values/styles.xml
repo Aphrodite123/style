@@ -7,11 +7,17 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    <!-- The style of divider -->
-    <style name="horizontal_line">
+    <!-- The divider of local music -->
+    <style name="fragment_listen_local_music_divider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
         <item name="android:background">@color/skin_line</item>
+    </style>
+    <!-- The divider of tool -->
+    <style name="fragment_listen_tool_divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/fragment_listen_divider</item>
     </style>
 
 </resources>

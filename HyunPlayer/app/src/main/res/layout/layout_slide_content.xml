@@ -11,69 +11,76 @@
         <RelativeLayout
             android:id="@+id/actionbar_rl"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="@dimen/activity_hyunplayer_actionbar_width"
             android:layout_alignParentTop="true"
             android:background="@drawable/hyunplayer_navigation_bg"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/actionbar_logout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/actionbar_logout_default"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/activity_hyunplayer_actionbar_top_margin"
+                android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerInParent="true"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:id="@+id/actionbar_ll"
+                <ImageView
+                    android:id="@+id/actionbar_logout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/activity_hyunplayer_logout_left_margin"
+                    android:src="@drawable/actionbar_logout_default"/>
 
-                    <ImageView
-                        android:id="@+id/actionbar_listen"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/actionbar_ll"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/actionbar_listen_bg_selected"/>
+                        android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/actionbar_watch"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="35dp"
-                        android:src="@drawable/actionbar_watch_bg_selected"/>
+                        <ImageView
+                            android:id="@+id/actionbar_listen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/actionbar_listen_bg_selector"/>
 
+                        <ImageView
+                            android:id="@+id/actionbar_watch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="35dp"
+                            android:src="@drawable/actionbar_watch_bg_selector"/>
+
+                        <ImageView
+                            android:id="@+id/actionbar_sing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="35dp"
+                            android:src="@drawable/actionbar_sing_bg_selector"/>
+                    </LinearLayout>
+
+                    <!-- indicator -->
                     <ImageView
-                        android:id="@+id/actionbar_sing"
+                        android:id="@+id/actionbar_horizontal_scroll_indicator"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="35dp"
-                        android:src="@drawable/actionbar_sing_bg_selected"/>
+                        android:layout_height="1dp"
+                        android:src="@android:color/white"/>
                 </LinearLayout>
 
-                <!-- indicator -->
                 <ImageView
-                    android:id="@+id/actionbar_horizontal_scroll_indicator"
+                    android:id="@+id/actionbar_search"
                     android:layout_width="wrap_content"
-                    android:layout_height="1dp"
-                    android:src="@android:color/white"/>
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/actionbar_search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/actionbar_search_bg_selected"/>
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/actionbar_search_bg_selector"/>
+            </RelativeLayout>
         </RelativeLayout>
 
         <com.aphrodite.hyunplayer.ui.view.viewpager.SlideMenuViewPager

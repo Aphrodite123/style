@@ -2,6 +2,7 @@ package com.aphrodite.hyunplayer.ui.fragment;
 
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.attr.fragment;
 import static com.aphrodite.hyunplayer.config.BaseConfig.SDCARD_PATH;
 
 /**
@@ -91,6 +93,15 @@ public class ListenFragment extends BaseFragment implements View.OnClickListener
         mRecent.setOnClickListener(this);
 
         mLocalMusicItem.setOnClickListener(this);
+    }
+
+    /**
+     * Release fragment resource.
+     */
+    public static void releaseInstance() {
+        if (null != sListenFragment) {
+            sListenFragment = null;
+        }
     }
 
     @Override

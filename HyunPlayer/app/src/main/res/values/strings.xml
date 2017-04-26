@@ -25,7 +25,9 @@
     <string name="listen_playlist">Playlist</string>
     <string name="listen_download">Download</string>
     <string name="listen_recent">Recent</string>
-
     <string name="listen_local_music">Local music</string>
+    <string name="fragment_listen_music_library_info">Music Library</string>
+    <string name="fragment_listen_channel_info">Channel</string>
+    <string name="fragment_listen_kuchat_info">KuChat</string>
 
 </resources>

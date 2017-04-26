@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.aphrodite.hyunplayer.ui.activity.HomeActivity">
+        <activity android:name="com.aphrodite.hyunplayer.ui.activity.HyunPlayerActivity">
             <intent-filter>
                 <action android:name="com.example.aphrodite.hyunplayer.ui.activity.HOME"/>
 

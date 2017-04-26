@@ -28,7 +28,16 @@ public class SingFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
             Bundle savedInstanceState) {
-        View contentView = inflater.inflate(R.layout.user_guide_page, container,false);
+        View contentView = inflater.inflate(R.layout.user_guide_page, container, false);
         return contentView;
+    }
+
+    /**
+     * Release fragment resource.
+     */
+    public static void releaseInstance() {
+        if (null != sSingFragment) {
+            sSingFragment = null;
+        }
     }
 }

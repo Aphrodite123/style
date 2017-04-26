@@ -8,7 +8,10 @@ import java.io.File;
  * Created by Aphrodite on 2016/9/16.
  */
 public class BaseConfig {
-    public static final boolean DEBUG = true;
+    /**
+     * Debug switch
+     */
+    public static final boolean DEBUG = false;
     public static final String PACKAGE_NAME = "com.example.aphrodite.hyunplayer";
 
     public static final String SDCARD_PATH = Environment.getExternalStorageDirectory().getPath() +

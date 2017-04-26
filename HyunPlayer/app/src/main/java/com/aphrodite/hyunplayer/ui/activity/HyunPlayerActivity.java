@@ -1,8 +1,13 @@
 package com.aphrodite.hyunplayer.ui.activity;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -11,6 +16,10 @@ import android.widget.RelativeLayout;
 import com.aphrodite.hyunplayer.R;
 import com.aphrodite.hyunplayer.config.HyApplication;
 import com.aphrodite.hyunplayer.config.SharePrefManager;
+import com.aphrodite.hyunplayer.logic.listen.ListenManager;
+import com.aphrodite.hyunplayer.logic.sing.SingManager;
+import com.aphrodite.hyunplayer.logic.view.HyunPlayerViewManager;
+import com.aphrodite.hyunplayer.logic.watch.WatchManager;
 import com.aphrodite.hyunplayer.ui.adapter.SlideHomePagerAdapter;
 import com.aphrodite.hyunplayer.ui.adapter.UserGuideAdapter;
 import com.aphrodite.hyunplayer.ui.base.BaseActivity;
@@ -27,8 +36,8 @@ import com.viewpagerindicator.IconPageIndicator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeActivity extends BaseActivity implements View.OnClickListener {
-    private static final String TAG = HomeActivity.class.getSimpleName();
+public class HyunPlayerActivity extends BaseActivity implements View.OnClickListener {
+    private static final String TAG = HyunPlayerActivity.class.getSimpleName();
     private RelativeLayout mUserGuideLayout;
     private ViewPager mGuideViewPager;
     private IconPageIndicator mGuideIconPageIndicator;
@@ -71,10 +80,14 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
      */
     private int mCurrentIndex = 0;
 
-    private List<BaseFragment> mFragments;
+    private List<Fragment> mFragmentList;
     private ListenFragment mListeneFragment;
     private WatchFragment mWatchFragment;
     private SingFragment mSingFragment;
+
+    private ListenManager mListenManager;
+    private WatchManager mWatchManager;
+    private SingManager mSingManager;
     /**
      * The index of listen,watch and sing
      */
@@ -86,6 +99,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        HyunPlayerViewManager.getInstance().setStatusBarStyle(this);
         initView();
         initData();
         firstLogin();
@@ -130,16 +144,30 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
             }
         });
 
+        /**
+         * Initialize fragment.
+         */
         mListeneFragment = ListenFragment.getInstance();
         mWatchFragment = WatchFragment.getInstance();
         mSingFragment = SingFragment.getInstance();
 
-        mFragments = new ArrayList<BaseFragment>();
-        mFragments.add(mListeneFragment);
-        mFragments.add(mWatchFragment);
-        mFragments.add(mSingFragment);
+        /**
+         *Add fragments to collections.
+         */
+        mFragmentList = new ArrayList<Fragment>();
+        mFragmentList.add(mListeneFragment);
+        mFragmentList.add(mWatchFragment);
+        mFragmentList.add(mSingFragment);
+
+        mListenManager = ListenManager.getInstance();
+        mListenManager.addHandler(mListenHandler);
+        mWatchManager = WatchManager.getInstance();
+        mWatchManager.addHandler(mWatchHandler);
+        mSingManager = SingManager.getInstance();
+        mSingManager.addHandler(mSingHandler);
+
         mHomePagerAdapter = new SlideHomePagerAdapter(this, getSupportFragmentManager(),
-                mFragments);
+                mFragmentList);
         mSlideViewPager.setAdapter(mHomePagerAdapter);
 
         if (null == mBtnsWidth) {
@@ -151,13 +179,60 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         initIndicatorWidth();
     }
 
+    private Handler mListenHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                //TODO
+            }
+        }
+    };
+
+    private Handler mWatchHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                //TODO
+            }
+        }
+    };
+
+
+    private Handler mSingHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                //TODO
+            }
+        }
+    };
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mListenManager.removeHandler(mListenHandler);
+        mWatchManager.removeHandler(mWatchHandler);
+        mSingManager.removeHandler(mSingHandler);
+        releaseFragment();
+    }
+
+    private void releaseFragment() {
+        if (mFragmentList != null) {
+            mFragmentList.clear();
+        }
+        ListenFragment.releaseInstance();
+        WatchFragment.releaseInstance();
+        SingFragment.releaseInstance();
+    }
+
     /**
      * Initalize indicator width
      */
     private void initIndicatorWidth() {
-        mActionbarWidth = MeasureUtils.getInstance(HomeActivity.this).getWidgetWidth
+        mActionbarWidth = MeasureUtils.getInstance(HyunPlayerActivity.this).getWidgetWidth
                 (mActionbarLL);
-        mIndicatorWidth = MeasureUtils.getInstance(HomeActivity.this).getWidgetWidth
+        mIndicatorWidth = MeasureUtils.getInstance(HyunPlayerActivity.this).getWidgetWidth
                 (mActionbarListen);
         mCusorParams = (LinearLayout.LayoutParams) mScrollIndicator.getLayoutParams();
         mCusorParams.width = mIndicatorWidth;

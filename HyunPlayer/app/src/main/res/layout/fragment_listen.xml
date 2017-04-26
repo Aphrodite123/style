@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/hyunplayer_navigation_entry_bg"
+            android:background="@android:color/white"
             android:scrollbars="none">
 
     <LinearLayout
@@ -13,150 +13,213 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/hyunplayer_navigation_entry_bg"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/navigation_top_margin"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/listen_like_ll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/listen_like_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@drawable/fragement_listen_like_selector"
+                        android:gravity="center"
+                        android:text="@string/listen_like"
+                        android:textColor="@drawable/fragment_listen_navigation_info_selector"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/listen_playlist_ll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/listen_playlist_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@drawable/fragment_listen_playlist_selector"
+                        android:gravity="center"
+                        android:text="@string/listen_playlist"
+                        android:textColor="@drawable/fragment_listen_navigation_info_selector"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/listen_download_ll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/listen_download_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@drawable/fragment_listen_download_selector"
+                        android:gravity="center"
+                        android:text="@string/listen_download"
+                        android:textColor="@drawable/fragment_listen_navigation_info_selector"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/listen_recent_ll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/listen_recent_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@drawable/fragment_listen_recent_selector"
+                        android:gravity="center"
+                        android:text="@string/listen_recent"
+                        android:textColor="@drawable/fragment_listen_navigation_info_selector"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                style="@style/fragment_listen_local_music_divider"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="@dimen/navigation_top_margin"/>
+
+            <RelativeLayout
+                android:id="@+id/local_music"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical">
+
+                <RelativeLayout
+                    android:id="@+id/local_music_rl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp">
+
+                    <ImageView
+                        android:id="@+id/local_music_phone_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/skin_kg_navigation_local_music_normal"/>
+
+                    <TextView
+                        android:id="@+id/local_music_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_toRightOf="@id/local_music_phone_icon"
+                        android:text="@string/listen_local_music"
+                        android:textColor="@android:color/white"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/local_music_random_play_rl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@id/local_music_rl">
+
+                    <ImageView
+                        android:id="@+id/local_music_random_play"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/local_music_random_play_selector"/>
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/introductory_indicator_bottom_margin">
+
+                    <TextView
+                        android:id="@+id/local_musics"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/local_musics_margin"
+                        android:drawableRight="@drawable/drn"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/local_musics_count_text"/>
+
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!-- Layout of music library,channel and kuchat -->
+        <LinearLayout
+            android:id="@+id/fragment_listen_mck_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/navigation_top_margin"
-            android:orientation="horizontal">
+            android:layout_weight="3"
+            android:gravity="center_horizontal">
 
-            <LinearLayout
-                android:id="@+id/listen_like_ll"
+            <TextView
+                android:id="@+id/music_library_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:drawablePadding="@dimen/navigation_top_margin"
+                android:drawableTop="@drawable/fragment_listen_music_library_selector"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:text="@string/fragment_listen_music_library_info"/>
 
-                <TextView
-                    android:id="@+id/listen_like_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/fragement_listen_like_selected"
-                    android:gravity="center"
-                    android:text="@string/listen_like"
-                    android:textColor="@drawable/fragment_listen_navigation_info_selected"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/listen_playlist_ll"
+            <TextView
+                android:id="@+id/channel_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:drawablePadding="@dimen/navigation_top_margin"
+                android:drawableTop="@drawable/fragment_listen_channel_selector"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:text="@string/fragment_listen_channel_info"/>
 
-                <TextView
-                    android:id="@+id/listen_playlist_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/fragment_listen_playlist_selected"
-                    android:gravity="center"
-                    android:text="@string/listen_playlist"
-                    android:textColor="@drawable/fragment_listen_navigation_info_selected"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/listen_download_ll"
+            <TextView
+                android:id="@+id/kuchat_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:drawablePadding="@dimen/navigation_top_margin"
+                android:drawableTop="@drawable/fragment_listen_kuchat_selector"
                 android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/listen_download_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/fragment_listen_download_selected"
-                    android:gravity="center"
-                    android:text="@string/listen_download"
-                    android:textColor="@drawable/fragment_listen_navigation_info_selected"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/listen_recent_ll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/listen_recent_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/fragment_listen_recent_selected"
-                    android:gravity="center"
-                    android:text="@string/listen_recent"
-                    android:textColor="@drawable/fragment_listen_navigation_info_selected"/>
-            </LinearLayout>
+                android:text="@string/fragment_listen_kuchat_info"/>
 
         </LinearLayout>
 
         <ImageView
-            style="@style/horizontal_line"
+            style="@style/fragment_listen_tool_divider"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="@dimen/navigation_top_margin"/>
 
-        <RelativeLayout
-            android:id="@+id/local_music"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical">
-
-            <RelativeLayout
-                android:id="@+id/local_music_rl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp">
-
-                <ImageView
-                    android:id="@+id/local_music_phone_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/skin_kg_navigation_local_music_normal"/>
-
-                <TextView
-                    android:id="@+id/local_music_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_toRightOf="@id/local_music_phone_icon"
-                    android:text="@string/listen_local_music"
-                    android:textColor="@android:color/white"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/local_music_random_play_rl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="5dp"
-                android:layout_toEndOf="@id/local_music_rl">
-
-                <ImageView
-                    android:id="@+id/local_music_random_play"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/local_music_random_play_selected"/>
-            </RelativeLayout>
-
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true">
-
-                <TextView
-                    android:id="@+id/local_musics"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            </RelativeLayout>
-        </RelativeLayout>
     </LinearLayout>
 
 </ScrollView>

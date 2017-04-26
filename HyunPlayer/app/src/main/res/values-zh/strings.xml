@@ -25,7 +25,9 @@
     <string name="listen_playlist">歌单</string>
     <string name="listen_download">下载</string>
     <string name="listen_recent">最近</string>
-
     <string name="listen_local_music">本地音乐</string>
+    <string name="fragment_listen_music_library_info">乐库</string>
+    <string name="fragment_listen_channel_info">电台</string>
+    <string name="fragment_listen_kuchat_info">酷群</string>
 
 </resources>

@@ -15,9 +15,9 @@ import java.util.List;
 
 public class SlideHomePagerAdapter extends FragmentPagerAdapter {
     private Context mContext;
-    private List<BaseFragment> mFragments;
+    private List<Fragment> mFragments;
 
-    public SlideHomePagerAdapter(Context context, FragmentManager fm, List<BaseFragment>
+    public SlideHomePagerAdapter(Context context, FragmentManager fm, List<Fragment>
             fragments) {
         super(fm);
         this.mContext = context;
